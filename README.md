@@ -20,7 +20,7 @@ One interface that combines simulated water-level sensors, community reports, a 
 - **Shelters & resources**: editable occupancy and supplies, capacity warnings, shortage detection
 - **SafeRoute**: illustrative route options with reported hazards listed (never labelled safe)
 - **Community reporting**: validated form with photo preview (preview only, not stored)
-- **Scenario simulator**: deterministic Baseline → Watch → Warning → Response stages that update every page together
+- **Scenario simulator**: deterministic Baseline → Watch → Warning → Response stages that update every page together, with a stage-review control, a "why it matters to a responder" explanation and a **Recommended next actions** panel (also on the dashboard) derived from the simulated state
 - **Guided demo**, notifications panel, toasts, reset, local persistence (browser `localStorage`)
 
 ## Setup
@@ -51,6 +51,12 @@ flowchart LR
   Actions[Click and form events] --> State
 ```
 Vanilla JavaScript, inline SVG for the map and charts, no external dependencies.
+
+## Tests
+See [TESTING.md](TESTING.md). Run the DOM tests with `npm i jsdom` then `node tests/flows-basic.test.js` and `node tests/flows-extended.test.js` (jsdom is only for tests; the app has no dependencies).
+
+## Deploy (GitHub Pages)
+Repository Settings → Pages → Deploy from branch → `main` / root. `index.html` is served as the site. Not deployed yet.
 
 ## Limitations
 Schematic map, scripted sensor data, preset routes, no backend, no authentication, no real alerts. Not tested by real responders and not a certified emergency system.
